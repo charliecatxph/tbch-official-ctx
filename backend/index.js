@@ -36,11 +36,9 @@ mongoose
     });
   })
   .catch((e) => {
-    console.log(e);
     app.get("*", (req, res) => {
       res.send(
-        "Can't connect to server. Please contact @charliecatxph about this issue." +
-          e
+        "Can't connect to server. Please contact @charliecatxph about this issue."
       );
     });
   });
