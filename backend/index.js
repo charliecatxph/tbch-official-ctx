@@ -39,7 +39,7 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model("TBCH", userSchema);
 
 mongoose
-  .connect(process.env.DB)
+  .connect(process.env.DBx)
   .then((d) => {
     console.log(`Connected to DB : ${d.connections[0].host}`.bold.yellow);
 
