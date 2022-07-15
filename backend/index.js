@@ -232,11 +232,6 @@ mongoose.connect(process.env.DB).then((d) => {
   });
 
   
-}).catch(e => {
-    console.log(e);
-    app.get("*", (req, res) => {
-        res.send("Can't connect to database.")
-    })
 })
 
 
