@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
   messages: [{ type: String }],
 });
 
-const User = mongoose.model("TBCHTest", userSchema);
+const User = mongoose.model("TBCH", userSchema);
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "../frontend/build")));
