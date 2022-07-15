@@ -24,13 +24,13 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model("TBCH", userSchema);
 
-app.use(express.json());
-app.use(express.static(path.join(__dirname, "../frontend/build")));
-
 mongoose
   .connect(process.env.DB)
   .then((d) => {
     console.log(`Connected to DB : ${d.connections[0].host}`.bold.yellow);
+
+    app.use(express.json());
+    app.use(express.static(path.join(__dirname, "../frontend/build")));
 
     app.get("*", (req, res) => {
       res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
