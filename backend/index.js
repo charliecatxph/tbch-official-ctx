@@ -9,6 +9,18 @@ const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "../frontend/build")));
 
+// ui/ux
+const colors = require("colors");
+
+// ports
+const PORT = process.env.PORT || 3000;
+
+function listen() {
+  app.listen(PORT, () => {
+    console.log(`Listening on PORT ${PORT}`.blue.bold);
+  });
+}
+
 // encryption
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -250,14 +262,7 @@ mongoose
         });
       });
     });
-    // ui/ux
-    const colors = require("colors");
-
-    // ports
-    const PORT = process.env.PORT || 3000;
-    app.listen(PORT, () => {
-      console.log(`Listening on PORT ${PORT}`.blue.bold);
-    });
+    listen();
   })
   .catch((e) => {
     app.get("*", (req, res) => {
@@ -265,4 +270,5 @@ mongoose
         "Can't connect to server. Please contact @charliecatxph about this issue."
       );
     });
+    listen();
   });
