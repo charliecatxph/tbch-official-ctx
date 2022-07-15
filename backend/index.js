@@ -30,10 +30,6 @@ mongoose
   .connect(process.env.DB)
   .then((d) => {
     console.log(`Connected to DB : ${d.connections[0].host}`.bold.yellow);
-
-    app.get("*", (req, res) => {
-      res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
-    });
   })
   .catch((e) => {
     app.get("*", (req, res) => {
@@ -42,6 +38,10 @@ mongoose
       );
     });
   });
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
+});
 
 app.post("/_tbch-api/forget-password", (req, res) => {
   const { name, password, secu_key } = req.body;
